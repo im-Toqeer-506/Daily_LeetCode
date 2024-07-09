@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<std::vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> threeSum(vector<int>& nums) {
         int n = nums.size();
         if (n < 3)
             return {};
