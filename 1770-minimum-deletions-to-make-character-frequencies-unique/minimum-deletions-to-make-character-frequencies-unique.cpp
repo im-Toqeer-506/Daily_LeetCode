@@ -1,24 +1,29 @@
 class Solution {
 public:
     int minDeletions(string s) {
-       unordered_map<char,int>freq;
-       for(auto ch:s){
-        freq[ch]++;
-       }
-       int deletion=0;
-       unordered_map<int,bool>usedfreq;
-        for(auto& pair:freq){
-        int count =pair.second;
-        while(usedfreq[count]){
-            count--;
-            deletion++;
+        int freq[26] = {0};
+        
+        for(char &ch : s) {
+            freq[ch-'a']++;
         }
-        if(count>0){
-            usedfreq[count]=true;
-
+        sort(begin(freq), end(freq));
+        
+        int result = 0;
+        
+        for(int i = 24; i >= 0 && freq[i] > 0; i--) {
+            
+            if(freq[i] >= freq[i+1]) {
+                
+                int prev = freq[i];
+                
+                freq[i] = max(0, freq[i+1]-1);
+                
+                result  += (prev - freq[i]);
+                
+            }
+            
         }
-       }
-       return deletion;
-
+          
+        return result;
     }
 };
