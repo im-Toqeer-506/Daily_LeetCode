@@ -1,15 +1,15 @@
 class Solution {
 public:
-    int memoRization(int n, vector<int>& memo) {
-        if (n <= 1)
-            return  n;
-        if (memo[n] != -1)return memo[n];
-
-        memo[n] = memoRization(n - 1, memo) + memoRization(n - 2, memo);
-        return memo[n];
-    }
     int fib(int n) {
-        vector<int> memo(n + 1, -1);
-        return memoRization(n, memo);
+         if (n <= 1) return n; 
+       vector<int> tabulor(n + 1);
+        tabulor[0] = 0;  
+        tabulor[1] = 1;  
+        for (int i = 2; i <= n; i++) 
+        {  
+            tabulor[i] = tabulor[i-1] + tabulor[i-2];  
+        }
+       return tabulor[n]; 
+
     }
 };
