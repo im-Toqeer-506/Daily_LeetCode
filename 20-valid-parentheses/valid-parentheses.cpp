@@ -1,12 +1,13 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char> Stack;  // Use char instead of int
+        stack<char> Stack;  
         char c;
         for (int i = 0; i < s.length(); i++) {
             if (s[i] == '[' || s[i] == '{' || s[i] == '(') {
                 Stack.push(s[i]);
-            } else {
+            } 
+            else {
                 if (Stack.empty())
                     return false;
                 c = Stack.top(); 
