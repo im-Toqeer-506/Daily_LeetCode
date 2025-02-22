@@ -8,7 +8,7 @@ public:
         int sr = 0, sc = 0, er = m - 1, ec = n - 1;
         vector<int> ans;
 
-        while (sr <= er && sc <= ec) {
+        while (sr <= er &&sc <= ec) {
             // left to right
             for (int j = sc; j <= ec; j++)
                 ans.push_back(matrix[sr][j]);
