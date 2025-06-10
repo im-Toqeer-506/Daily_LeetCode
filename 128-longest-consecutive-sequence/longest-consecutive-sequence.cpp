@@ -5,21 +5,32 @@ public:
             return 0;
         if (nums.size() == 1)
             return 1;
-        unordered_set<int> hashSet;
-        hashSet.insert(nums.begin(), nums.end());
-        int sequance = 0;
-        for (auto num : nums) {
-            int currNum = num;
-            int currSequance = 1;
-            if (hashSet.find(num - 1) == hashSet.end()) {
-
-                while (hashSet.find(currNum + 1) != hashSet.end()) {
-                    currNum += 1;
-                    currSequance += 1;
-                }
-                sequance = max(sequance, currSequance);
-            }
+        unordered_map<int,bool> mp;
+        int ln=0;
+        for(auto num:nums)
+        {
+            mp[num]=false;
         }
-        return sequance;
+         for (int num : nums) {
+            if(mp[num])continue;
+            int cl=1;
+            mp[num]=true;
+            // Agay Dakh 
+            int n = num + 1;
+            while (mp.count(n) && mp[n] == false) {
+            cl++;
+                mp[n] = true;
+                n++;
+            }
+            // Pichay Dakh
+            int p= num - 1;
+            while (mp.count(p) && mp[p] == false) {
+                cl++;
+                mp[p] = true;
+                p--;
+            }
+            ln = max(ln, cl);
+         }
+    return ln;
     }
 };
